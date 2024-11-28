@@ -89,21 +89,19 @@ namespace Coding_Practice.Practice
 
         public void reverse()
         {
-            var first = head;
-            tail = head;
+            Node<TValue> preNode = null;
+            Node<TValue> currentNode = head;
+            Node<TValue> nextNode = null;
 
-            var second = first.Next;
-
-            for (int i = 0; i < length - 1; i++)
+            while(currentNode != null)
             {
-                var temp = second.Next;
-                second.Next = first;
-                first = second;
-                second = temp;
+                nextNode = currentNode.Next;
+                currentNode.Next = preNode;
+                preNode = currentNode;
+                currentNode = nextNode;
             }
 
-            head.Next = null;
-            head = first;
+            head = preNode;
         }
 
 
