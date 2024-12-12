@@ -31,5 +31,25 @@ namespace Coding_Practice.Arrays
             }
             return result.ToArray();
         }
+
+
+        public (int, int) TwoSumCalOptimised(int[] nums, int target)
+        {
+            HashSet<int> seenNumbers = new HashSet<int>();
+
+            foreach(var num in nums)
+            {
+                var complement = target - num;
+
+                if (seenNumbers.Contains(complement))
+                {
+                    return (num, complement);
+                }
+
+                seenNumbers.Add(num);
+            }
+
+            throw new Exception("Not found any match");
+        }
     }
 }
